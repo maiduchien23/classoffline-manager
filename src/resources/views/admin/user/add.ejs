@@ -1,0 +1,50 @@
+<div class="card card-primary">
+	<form action="/admin/users/add"
+		method="post">
+		<div class="card-body">
+			<div class="form-group">
+				<label for="nameUser">Tên người dùng:</label>
+				<input type="text"
+					class="form-control"
+					id="nameUser"
+					name="name"
+					placeholder="Nhập tên người dùng" />
+				<span class="text-danger"><%= validate.getError(errors, "name") %></span>
+			</div>
+			<div class="form-group">
+				<label for="emailUser">Email:</label>
+				<input type="email"
+					class="form-control"
+					id="emailUser"
+					name="email"
+					placeholder="Nhập email người dùng" />
+				<span class="text-danger"><%= validate.getError(errors, "email")%></span>
+			</div>
+			<div class="form-group">
+				<label for="phoneUser">Số điện thoại:</label>
+				<input type="text"
+					class="form-control"
+					id="phoneUser"
+					name="phone"
+					placeholder="Nhập số điện thoại người dùng" />
+				<span class="text-danger"><%= validate.getError(errors, "phone")%></span>
+			</div>
+			<div class="form-group">
+				<label for="addressUser">Địa chỉ:</label>
+				<input type="text"
+					class="form-control"
+					id="addressUser"
+					name="address"
+					placeholder="Nhập địa chỉ người dùng" />
+				<span class="text-danger"><%= validate.getError(errors, "address")%></span>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<button type="submit"
+				class="btn btn-primary">
+				Thêm người dùng
+			</button>
+		</div>
+	</form>
+</div>

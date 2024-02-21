@@ -1,0 +1,40 @@
+<h4><%= exercise.title %></h4>
+
+<div class="card">
+	<strong>Nội dung</strong>
+	<p><%= exercise.content %></p>
+	<a href="<%= exercise.attachment %>"><%= exercise.attachment %></a>
+</div>
+
+<div>
+	<form action="/admin/classes/exercise-submit/<%= exercise.id %>"
+		method="POST"
+		autocomplete="off">
+		<img src="/assets/img/user2-160x160.jpg"
+			class="img-circle elevation-2"
+			alt="User Image"
+			width="30" />
+		<input type="text"
+			name="content"
+			placeholder="Nhập câu trả lời của bạn">
+		<input type="text"
+			name="attachment"
+			placeholder="Nhập link đính kèm">
+		<button type="submit">Gửi</button>
+	</form>
+</div>
+
+<% exerciseSubmits.forEach((exerciseSubmit) => { %>
+<div class="card mt-4">
+	<div>
+		<img src="/assets/img/user2-160x160.jpg"
+			class="img-circle elevation-2"
+			alt="User Image"
+			width="30" />
+		<strong>Nguyễn Khải</strong>
+	</div>
+
+	<p><%= exerciseSubmit.content %></p>
+	<a href="<%= exerciseSubmit.attachment %>"><%= exerciseSubmit.attachment %></a>
+</div>
+<% }) %>

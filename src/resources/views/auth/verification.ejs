@@ -1,0 +1,73 @@
+<section class="container-fluid bg-body-tertiary d-block">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px">
+            <div
+                class="card bg-white mb-5 mt-5 border-0"
+                style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02)"
+            >
+                <form action="/auth/logout" method="post">
+                    <button class="chevron-left">
+                        <i
+                            class="fas fa-chevron-left"
+                            style="color: #ffffff"
+                        ></i>
+                    </button>
+                </form>
+                <div class="card-body p-5 text-center">
+                    <form action="/auth/verification" method="post">
+                        <h3>Xác minh 2 bước</h3>
+                        <p>
+                            Chúng tôi vừa gửi một tin nhắn văn bản có một mã xác
+                            minh tới email: <strong><%= email %></strong>
+                        </p>
+                        <% if(message) {%>
+                        <div><%= message %></div>
+                        <% } %>
+                        <div class="otp-field mb-4">
+                            <input
+                                type="number"
+                                maxlength="1"
+                                name="numberOne"
+                            />
+                            <input
+                                type="number"
+                                maxlength="1"
+                                name="numberTwo"
+                                disabled
+                            />
+                            <input
+                                type="number"
+                                maxlength="1"
+                                name="numberThree"
+                                disabled
+                            />
+                            <input
+                                type="number"
+                                maxlength="1"
+                                name="numberFour"
+                                disabled
+                            />
+                            <input
+                                type="number"
+                                maxlength="1"
+                                name="numberFive"
+                                disabled
+                            />
+                        </div>
+
+                        <button class="btn btn-verify btn-primary mb-3">
+                            Xác minh
+                        </button>
+                    </form>
+
+                    <p class="resend text-muted mb-0">
+                        Không nhận được mã?
+                        <form action="/auth/resetOtp" method="post">
+                            <button class="btn-reset-otp" style="font-size: 14px;">Gửi lại</button>
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

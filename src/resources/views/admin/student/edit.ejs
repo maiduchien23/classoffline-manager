@@ -1,0 +1,58 @@
+<div class="card card-primary">
+	<form action="/admin/students/edit/<%= student.id %>"
+		method="post">
+		<div class="card-body">
+			<div class="form-group">
+				<label for="nameUser">Tên người dùng:</label>
+				<input type="text"
+					class="form-control"
+					id="nameUser"
+					name="name"
+					placeholder="Nhập tên người dùng"
+					value="<%= student.name %>" />
+				<span class="text-danger"><%= validate.getError(errors, "name")%></span>
+			</div>
+			<div class="form-group">
+				<label for="emailUser">Email:</label>
+				<input type="email"
+					class="form-control"
+					id="emailUser"
+					name="email"
+					placeholder="Nhập email"
+					value="<%= student.email %>"
+					readonly />
+				<span class="text-danger"><%= validate.getError(errors, "email")%></span>
+			</div>
+			<div class="form-group">
+				<label for="phoneUser">Số điện thoại:</label>
+				<input type="text"
+					class="form-control"
+					id="phoneUser"
+					name="phone"
+					placeholder="Nhập số điện thoại"
+					value="<%= student.phone %>" />
+				<span class="text-danger"><%= validate.getError(errors, "phone")%></span>
+			</div>
+			<div class="form-group">
+				<label for="addressUser">Địa chỉ:</label>
+				<input type="text"
+					class="form-control"
+					id="addressUser"
+					name="address"
+					placeholder="Nhập địa chỉ"
+					value="<%= student.address %>" />
+				<span class="text-danger"><%= validate.getError(errors, "address")%></span>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<input type="hidden"
+				name="_method"
+				value="PATCH">
+			<button type="submit"
+				class="btn btn-primary">
+				Sửa học viên
+			</button>
+		</div>
+	</form>
+</div>

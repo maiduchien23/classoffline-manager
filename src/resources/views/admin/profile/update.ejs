@@ -1,0 +1,55 @@
+<div class="card card-primary">
+	<form action="/admin/profile/update"
+		method="post">
+		<div class="card-body">
+			<div class="form-group">
+				<label for="nameUser">Họ tên:</label>
+				<input type="text"
+					class="form-control"
+					id="nameUser"
+					name="nameUser"
+					placeholder="Nhập tên người dùng"
+					value="<%= user.name %>" />
+				<span class="text-danger"><%= validate.getError(errors, "nameUser")%></span>
+			</div>
+			<div class="form-group">
+				<label for="emailUser">Email:</label>
+				<input type="email"
+					class="form-control"
+					id="emailUser"
+					name="emailUser"
+					placeholder="Nhập email"
+					value="<%= user.email %>"
+					readonly />
+				<span class="text-danger"><%= validate.getError(errors, "emailUser")%></span>
+			</div>
+			<div class="form-group">
+				<label for="phoneUser">Số điện thoại:</label>
+				<input type="text"
+					class="form-control"
+					id="phoneUser"
+					name="phoneUser"
+					placeholder="Nhập số điện thoại"
+					value="<%= user.phone %>" />
+				<span class="text-danger"><%= validate.getError(errors, "phoneUser")%></span>
+			</div>
+			<div class="form-group">
+				<label for="addressUser">Địa chỉ</label>
+				<input type="text"
+					class="form-control"
+					id="addressUser"
+					name="addressUser"
+					placeholder="Nhập địa chỉ"
+					value="<%= user.address %>" />
+				<span class="text-danger"><%= validate.getError(errors, "addressUser")%></span>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<button type="submit"
+				class="btn btn-primary">
+				Cập nhật
+			</button>
+		</div>
+	</form>
+</div>

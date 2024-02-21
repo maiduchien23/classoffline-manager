@@ -1,0 +1,51 @@
+<h2 class="fs-4 font-weight-bold"
+	style="font-size: 2rem;"><%= comment.title %></h2>
+<div class="card mt-2 pb-3">
+	<div class="nav-link">
+		<img src="/assets/img/avatar.png"
+			class="img-circle elevation-2 mr-2"
+			alt="Image"
+			width="36"
+			height="36" />
+		<strong><%= comment.User.name %>: </strong>
+	</div>
+
+	<div style="padding-left: 3.4rem !important;">
+		<%- comment.content %>
+		<a href="
+		<%= comment.attachment %>"><%= comment.attachment %></a>
+	</div>
+</div>
+
+<form action=""
+	class="form-group">
+	<div class="d-flex align-items-center"
+		style="gap: 10px;">
+		<img src="/assets/img/avatar2.png"
+			class="img-circle elevation-2"
+			alt="User Image"
+			width="36"
+			height="36" />
+		<input type="text"
+			class="form-control"
+			placeholder="Nhập câu trả lời của bạn">
+		<input type="text"
+			class="form-control"
+			placeholder="Nhập link đính kèm">
+	</div>
+</form>
+
+<%# exerciseSubmits.forEach((exerciseSubmit) => { %>
+<div class="card mt-4">
+	<div>
+		<img src="/assets/img/user2-160x160.jpg"
+			class="img-circle elevation-2"
+			alt="User Image"
+			width="30" />
+		<strong>Nguyễn Khải</strong>
+	</div>
+
+	<p><%#= exerciseSubmit.content %></p>
+	<a href="<%#= exerciseSubmit.attachment %>"><%#= exerciseSubmit.attachment %></a>
+</div>
+<%# }) %>

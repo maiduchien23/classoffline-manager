@@ -1,0 +1,225 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Brand Logo -->
+	<a href="/"
+		class="brand-link">
+		<span class="d-flex align-items-center brand-text font-weight-light">
+			<img src="/assets/img/logo-web.png"
+				class="img-rectangle rounded"
+				alt="Classes"
+				width="50" />
+			<h3 class="font-weight-bold mb-0 ml-2">F8 Classes</h3>
+		</span>
+	</a>
+
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column"
+				data-widget="treeview"
+				role="menu"
+				data-accordion="false">
+				<!-- Add icons to the links using the .nav-icon class
+   with font-awesome or any other icon font library -->
+				<li class="nav-item">
+					<a href="/admin"
+						class="nav-link <%= moduleName === "Tổng quan" ? "active" : "" %>">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>Tổng quan</p>
+					</a>
+				</li>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.read')) {%>
+				<li class="nav-item <%= moduleName === "Người dùng" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Người dùng" ? "active" : "" %>">
+						<i class="nav-icon fas fa-users"></i>
+						<p>
+							Người dùng
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/users"
+								class="nav-link <%= title === "Danh sách người dùng" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon active"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'users.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/users/add"
+								class="nav-link <%= title === "Thêm người dùng" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'roles.read')) {%>
+				<li class="nav-item <%= moduleName === "Role" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Role" ? "active" : "" %>">
+						<i class="fas fa-user-cog"></i>
+						<p>
+							Role
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/roles"
+								class="nav-link <%= title === "Danh sách Role" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon active"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'roles.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/roles/add"
+								class="nav-link <%= title === "Thêm role" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'courses.read')) {%>
+				<li class="nav-item <%= moduleName === "Khóa học" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Khóa học" ? "active" : "" %>">
+						<i class="nav-icon fas fa-book"></i>
+						<p>
+							Khóa học
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/courses"
+								class="nav-link <%= title === "Danh sách khóa học" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'courses.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/courses/add"
+								class="nav-link <%= title === "Thêm khóa học" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'classes.read')) {%>
+				<li class="nav-item <%= moduleName === "Lớp học" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Lớp học" ? "active" : "" %>">
+						<i class="fas fa-door-open mr-1"></i>
+						<p>
+							Lớp học
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/classes"
+								class="nav-link <%= title === "Danh sách lớp học" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'classes.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/classes/add"
+								class="nav-link <%= title === "Thêm lớp học" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'teachers.read')) {%>
+				<li class="nav-item <%= moduleName === "Giảng viên" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Giảng viên" ? "active" : "" %>">
+						<i class="fas fa-chalkboard-teacher mr-1"></i>
+						<p>
+							Giảng viên/Trợ giảng
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/teachers"
+								class="nav-link <%= title === "Danh sách giảng viên, trợ giảng" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'teachers.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/teachers/add"
+								class="nav-link <%= title === "Thêm giảng viên, trợ giảng" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'students.read')) {%>
+				<li class="nav-item <%= moduleName === "Học viên" ? "menu-is-opening menu-open" : "" %>">
+					<a href="#"
+						class="nav-link <%= moduleName === "Học viên" ? "active" : "" %>">
+						<i class="fas fa-graduation-cap"></i>
+						<p>
+							Học viên
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="/admin/students"
+								class="nav-link <%= title === "Danh sách học viên" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Danh sách</p>
+							</a>
+						</li>
+						<% if(permissionUtils.getPermissionUser(permissionUser, 'students.add')) {%>
+						<li class="nav-item">
+							<a href="/admin/students/add"
+								class="nav-link <%= title === "Thêm học viên" ? "active" : "" %>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Thêm mới</p>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</li>
+				<% } %>
+				<li class="nav-item">
+					<a href="/admin/settings"
+						class="nav-link <%= moduleName === "Cài đặt" ? "active" : "" %>">
+						<i class="fas fa-cog"></i>
+						<p>
+							Cài Đặt
+						</p>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- /.sidebar-menu -->
+	</div>
+	<!-- /.sidebar -->
+</aside>

@@ -1,0 +1,69 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="/" class="brand-link">
+    <span class="brand-text font-weight-light">
+      <h3 class="font-weight-bold">F8 Classes</h3>
+    </span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+     with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="/teacher" class="nav-link <%= moduleName === "Trang chủ" ? "active" : "" %>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Trang chủ</p>
+          </a>
+        </li>
+        <li class="nav-item <%= moduleName === "Lớp học" ? "menu-is-opening menu-open" : "" %>">
+          <a href="#" class="nav-link <%= moduleName === "Lớp học" ? "active" : "" %>">
+            <i class="fas fa-door-open mr-1"></i>
+            <p>
+              Lớp học
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/teacher/classes" class="nav-link <%= title === "Danh sách lớp học" ? "active" : "" %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item <%= moduleName === "Khóa học" ? "menu-is-opening menu-open" : "" %>">
+          <a href="#" class="nav-link <%= moduleName === "Khóa học" ? "active" : "" %>">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Khóa học
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/teacher/courses" class="nav-link <%= title === "Danh sách khóa học" ? "active" : "" %>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Danh sách</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/admin/calendar" class="nav-link <%= moduleName === "Lịch trình" ? "active" : "" %>">
+            <i class="far fa-calendar-alt"></i>
+            <p>
+              Lịch trình
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

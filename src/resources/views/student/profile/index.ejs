@@ -1,0 +1,121 @@
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <h5 class="m-4"><strong>Ảnh đại diện</strong></h5>
+          <div class="card-body text-center mb-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="mb-4"><strong>Thông tin cá nhân</strong></h5>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Họ tên:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= user.name %></p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= user.email %></p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Số điện thoại:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= user.phone %></p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Địa chỉ:</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                  <%= user.address %>
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-5">
+                <form action="/profile/edit" method="GET">
+                  <button type="submit" class="btn btn-block btn-info">
+                    Cập nhập thông tin
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <h5 class="mb-4">
+                  <strong>Kết nối mạng xã hội dễ dàng hơn</strong>
+                </h5>
+                <div class="d-flex flex-row">
+                  <div class="col-md-2">
+                    <p>Facebook</p>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="background_box background_box_facebook">
+                      <input type="checkbox" id="checkbox_fb" class="checkbox_social" <%
+                                              userSocials.forEach( (user) => { %> <%= user.provider === 'facebook'
+                                              ?"checked" : "" %> <% }) %> />
+                      <label class="toggle_box toggle_box_facebook" for="checkbox_fb">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="col-md-2">
+                    <p>Google</p>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="background_box background_box_google">
+                      <input type="checkbox" id="checkbox_google" class="checkbox_social" <%
+                                              userSocials.forEach( (user) => { %> <%= user.provider === 'google'
+                                              ?"checked" : "" %> <% }) %> />
+                      <label class="toggle_box toggle_box_google" for="checkbox_goole">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="col-md-2">
+                    <p>Github</p>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="background_box background_box_github">
+                      <input type="checkbox" id="checkbox_github" class="checkbox_social" <%
+                                              userSocials.forEach( (user) => { %> <%= user.provider === 'github'
+                                              ?"checked" : "" %> <% }) %> />
+                      <label class="toggle_box toggle_box_github" for="checkbox_github">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

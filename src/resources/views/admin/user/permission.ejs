@@ -1,0 +1,40 @@
+<div class="mb-4">
+	<label for="">Tên người dùng:</label>
+	<input type="text"
+		class="form-control w-50"
+		value="<%= user.name %>"
+		disabled>
+</div>
+<form action="/admin/users/permission/<%= user.id %>"
+	method="post">
+	<div class="d-flex align-items-center ">
+		<table class="table table-bordered text-center w-50">
+			<thead>
+				<tr>
+					<th style="width: 10px">#</th>
+					<th>Tên Role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% roles.forEach((role) => { %>
+				<tr>
+					<th style="width: 150px">
+						<input type="checkbox"
+							name="roles"
+							value="<%= role.id %>"
+							class="checkboxItem"
+							<%= permissionUtils.isRole(roleUser, role.id) && "checked" %>>
+					</th>
+					<th><%= role.name %></th>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+	<div class="d-flex align-items-center">
+		<button type="submit"
+			class="btn btn-success">Lưu</button>
+		<a href="/admin/users/permissions/add/<%= user.id %>"
+			class="btn btn-info ml-3">Thêm quyền</a>
+	</div>
+</form>

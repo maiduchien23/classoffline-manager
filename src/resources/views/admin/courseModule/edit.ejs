@@ -1,0 +1,25 @@
+<div class="card card-primary">
+  <form action="/admin/course-modules/edit/<%= moduleVal.id %>" method="post">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="">Tiêu đề tài liệu:</label>
+        <input type="text" class="form-control" name="moduleName" value="<%= moduleVal.name %>" placeholder="Nhập tiêu đề tài liệu" />
+      </div>
+      <div class="form-group">
+        <label for="">Khóa học:</label>
+        <select class="form-control" name="courseId">
+          <option value="">Chọn khóa học</option>
+          <% courses.forEach((course) => {%>
+          <option value="<%= course.id %>" <%= course.id === moduleVal.Course.id ? "selected" : "" %>><%= course.name %> </option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    <div class="card-footer">
+      <input type="hidden" name="_method" value="PATCH">
+      <button type="submit" class="btn btn-primary">
+        Sửa tài liệu
+      </button>
+    </div>
+  </form>
+</div>

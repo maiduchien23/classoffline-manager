@@ -1,0 +1,56 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <div class="card-body p-0">
+            <!-- THE CALENDAR -->
+            <div id="calendar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(function() {
+    var date = new Date()
+    var d = date.getDate(),
+      m = date.getMonth(),
+      y = date.getFullYear()
+
+    var Calendar = FullCalendar.Calendar;
+
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      themeSystem: 'bootstrap',
+      //Random default events
+      events: [{
+        title: 'BackEnd K1',
+        startRecur: new Date('2024/01/14'),
+        endRecur: new Date('2024/01/30'),
+        daysOfWeek: [1, 4],
+        backgroundColor: '#f56954', //red
+        borderColor: '#f56954', //red
+        allDay: false,
+      }],
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar !!!
+      drop: function(info) {
+        // is the "remove after drop" checkbox checked?
+        if (checkbox.checked) {
+          // if so, remove the element from the "Draggable Events" list
+          info.draggedEl.parentNode.removeChild(info.draggedEl);
+        }
+      }
+    });
+
+    calendar.render();
+  })
+</script>

@@ -1,0 +1,226 @@
+<div class="card-body">
+	<div class="d-flex justify-content-end gap-2 container-fluid">
+		<div class="d-flex mr-2">
+			<a href="/admin/users/import"
+				class="btn btn-warning mr-2">
+				<i class="fas fa-file-import mr-1"></i>
+				Import File</a>
+			<form action="/admin/users/export"
+				method="post">
+				<button type="submit"
+					class="btn btn-primary">
+					<i class="fas fa-file-export mr-1"></i>
+					Export File
+				</button>
+			</form>
+		</div>
+		<% if(permissionUtils.getPermissionUser(permissionUser, 'users.delete')) {%>
+		<div>
+			<button type="button"
+				class="btn btn-danger"
+				data-toggle="modal"
+				data-target="#modal-danger">
+				<i class="fas fa-trash mr-1"></i>
+				Xóa tất cả
+			</button>
+			<div class="modal fade"
+				id="modal-danger">
+				<div class="modal-dialog">
+					<div class="modal-content bg-danger">
+						<div class="modal-header">
+							<h4 class="modal-title">Xóa nhiều người dùng</h4>
+							<button type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Bạn có chắc xóa tất cả các người dùng này?</p>
+						</div>
+						<div class="modal-footer justify-content-between">
+							<button type="button"
+								class="btn btn-outline-light"
+								data-dismiss="modal">
+								Không
+							</button>
+							<form action="/admin/users/deleteAll"
+								method="POST">
+								<input type="hidden"
+									name="_method"
+									value="DELETE">
+								<input type="hidden"
+									id="listDelete"
+									name="listUserDelete"
+									value="">
+								<button type="submit"
+									class="btn btn-outline-light"
+									id="deleteAll">
+									Có
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% } %>
+	</div>
+	<section class="justify-content-between content mb-3">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="d-flex align-items-center col-md-8 offset-md-2 ml-0 p-0">
+					<form action="">
+						<div class="input-group">
+							<input type="text"
+								class="form-control form-control-md"
+								name="keyword"
+								placeholder="Nhập từ tìm kiếm">
+							<div class="input-group-append"
+								width="38px"
+								height="38px">
+								<button type="submit"
+									class="btn btn-md btn-default">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<div class="dropdown ml-2">
+						<button class="btn btn-default"
+							data-toggle="dropdown">
+							<i class="fa fa-filter"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<table class="table table-bordered text-center">
+		<thead>
+			<tr>
+				<th><input type="checkbox"
+						id="checkboxAll"></th>
+				<th style="width: 10px">#</th>
+				<th>Tên</th>
+				<th>Email</th>
+				<th>SĐT</th>
+				<th>Địa chỉ</th>
+				<th>Ngày tạo</th>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.permission')) {%>
+				<th>Phân quyền</th>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.update') || permissionUtils.getPermissionUser(permissionUser, 'users.delete')) {%>
+				<th colspan="2">Chức năng</th>
+				<% } %>
+			</tr>
+		</thead>
+		<tbody>
+			<% users.forEach((user, index) => { %>
+			<tr>
+				<th><input type="checkbox"
+						class="checkboxItem"
+						value="<%= user.id %>"></th>
+				<td><%= index + 1 %></td>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.phone %></td>
+				<td><%= user.address %></td>
+				<td><%= moment(user.createdAt).format("DD/MM/YYYY") %></td>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.permission')) {%>
+				<td>
+					<form action="/admin/users/permission/<%= user.id %>"
+						method="get">
+						<button type="submit"
+							class="btn btn-success"><i class="fas fa-user-cog"></i></button>
+					</form>
+				</td>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.update')) {%>
+				<td>
+					<form action="/admin/users/edit/<%= user.id %>"
+						method="get">
+						<button type="submit"
+							class="btn btn-info">
+							<i class="fas fa-edit"></i>
+						</button>
+					</form>
+				</td>
+				<% } %>
+				<% if(permissionUtils.getPermissionUser(permissionUser, 'users.delete')) {%>
+				<td>
+					<button type="button"
+						class="btn btn-danger"
+						data-toggle="modal"
+						data-target="#modal-danger-<%= user.id %>">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+					<div class="modal fade"
+						id="modal-danger-<%= user.id %>">
+						<div class="modal-dialog">
+							<div class="modal-content bg-danger">
+								<div class="modal-header">
+									<h4 class="modal-title">Xóa người dùng</h4>
+									<button type="button"
+										class="close"
+										data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p>Bạn có chắc xóa người dùng này?</p>
+								</div>
+								<div class="modal-footer justify-content-between">
+									<button type="button"
+										class="btn btn-outline-light"
+										data-dismiss="modal">
+										Không
+									</button>
+									<form action="/admin/users/delete/<%= user.id %>"
+										method="post">
+										<input type="hidden"
+											name="_method"
+											value="DELETE">
+										<button type="submit"
+											class="btn btn-outline-light">
+											Có
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+				<% } %>
+			</tr>
+			<% }) %>
+		</tbody>
+	</table>
+	<div class="d-flex mt-3 align-items-center justify-content-between">
+		<form action=""
+			method="post">
+			<div class="form-group">
+				<div class="d-flex align-items-center"
+					style="width: 170px">
+					<label class="mr-2 mb-0 w-100">Số bản ghi</label>
+					<select class="form-control record-number"
+						name="recordNumber">
+						<option value="5"
+							<%= +recordNumber === 5 ? 'selected' : "" %>>5</option>
+						<option value="10"
+							<%= +recordNumber === 10 ? 'selected' : "" %>>10</option>
+						<option value="15"
+							<%= +recordNumber === 15 ? 'selected' : "" %>>15</option>
+						<option value="20"
+							<%= +recordNumber === 20 ? 'selected' : "" %>>20</option>
+					</select>
+				</div>
+			</div>
+		</form>
+		<%- include("../../subviews/paginate", {totalPage, page}) %>
+
+	</div>
+</div>

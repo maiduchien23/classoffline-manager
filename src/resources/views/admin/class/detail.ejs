@@ -1,0 +1,64 @@
+<h4><strong>Mô tả</strong></h4>
+
+<ul class="ml-4">
+	<li class="py-2"><strong>Tên: </strong><%= classInfor.name %></li>
+	<li class="py-2"><strong>Sĩ số: </strong><%= classInfor.quantity %></li>
+	<li class="py-2"><strong>Ngày khai giảng: </strong><%= classInfor.startDate.toLocaleDateString('en-GB') %></li>
+	<li class="py-2"><strong>Ngày bế giảng: </strong><%= classInfor.endDate.toLocaleDateString('en-GB') %></li>
+	<li class="py-2"><strong>Lịch học: </strong>
+		<% scheduleClass.forEach(({schedule, timeLearn}) => { %>
+		<ul class="ml-3">
+			<li><strong><%= schedule !== 0 ? `Thứ ${schedule + 1}` : "Chủ nhật" %>: </strong><%= timeLearn %></li>
+		</ul>
+		<% }) %>
+	</li>
+	<li class="pb-2">
+		<strong>Giảng viên: </strong>
+		<% teacherList.forEach((teacher, index) => { %>
+		<span><%= teacher.name %><%= index < (teacherList.length - 1) ? "," : "" %> </span>
+		<% }) %>
+	</li>
+	<li class="py-2">
+		<strong>Trợ giảng: </strong>
+		<% taList.forEach((ta, index) => { %>
+		<span><%= ta.name %><%= index < (ta.length - 1) ? "," : "" %> </span>
+		<% }) %>
+	</li>
+</ul>
+<a href="/admin/classes/teachers/add/<%= classInfor.id %>"
+	class="btn btn-success">Danh sách giảng viên/trợ giảng</a>
+<h4 class="mt-3">
+	<strong>Danh sách học viên trong lớp: </strong>
+	<a href="/admin/classes/students"
+		class="btn btn-primary">Thêm học viên</a>
+	<a href="/admin/classes/attendance/<%= classInfor.id %>"
+		class="btn btn-warning">Điểm danh</a>
+	<a href="/admin/classes/questions/<%= classInfor.id %>"
+		class="btn btn-danger">Câu hỏi</a>
+	<a href="/admin/classes/exercises/<%= classInfor.id %>"
+		class="btn btn-info">Bài tập</a>
+</h4>
+<table class="table table-bordered text-center">
+	<thead>
+		<tr>
+			<th style="width: 10px">#</th>
+			<th>Tên</th>
+			<th>Email</th>
+			<th>SĐT</th>
+			<th>Địa chỉ</th>
+			<th>Ngày tạo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% students.forEach((student, index) => { %>
+		<tr>
+			<td><%= index + 1 %></td>
+			<td><a href="/admin/students/detail/<%= student.User.id %>"><%= student.User.name %></a></td>
+			<td><%= student.User.email %></td>
+			<td><%= student.User.phone %></td>
+			<td><%= student.User.address %></td>
+			<td><%= moment(student.User.createdAt).format("DD/MM/YYYY") %></td>
+		</tr>
+		<% }) %>
+	</tbody>
+</table>

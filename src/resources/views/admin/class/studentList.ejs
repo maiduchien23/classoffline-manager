@@ -1,0 +1,28 @@
+<% if(error) {%>
+<h2><%= error %></h2>
+<% } %>
+
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th style="width: 10px">#</th>
+      <th>Tên</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% students.forEach((student, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><a href="/admin/students/detail/<%= student.id %>"><%= student.name %></a></td>
+      <td><%= student.email %></td>
+      <th><input type="checkbox" class="checkboxItem" value="<%= student.id %>"></th>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<form action="/admin/classes/students" method="post">
+  <input type="hidden" value="" id="listUser" name="listUser">
+  <button class="btn btn-success mt-3 btn-add">Thêm học viên</button>
+</form>

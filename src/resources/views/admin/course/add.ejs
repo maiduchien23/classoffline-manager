@@ -1,0 +1,68 @@
+<div class="card card-primary">
+	<form action="/admin/courses/add"
+		method="post">
+		<div class="card-body">
+			<div class="form-group">
+				<label for="">Tên khóa học:</label>
+				<input type="text"
+					class="form-control"
+					name="courseName"
+					placeholder="Nhập tên khóa học" />
+				<span class="text-danger"><%= validate.getError(errors, "courseName")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Học phí:</label>
+				<input type="number"
+					class="form-control"
+					name="coursePrice"
+					placeholder="Nhập học phí" />
+				<span class="text-danger"><%= validate.getError(errors, "coursePrice")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Giảng viên:</label>
+				<select class="form-control"
+					name="teacherId"
+					id="">
+					<option value="">Chọn giảng viên</option>
+					<% if(teachers){ %>
+					<% teachers.forEach((teacher) => {%>
+					<option value="<%= teacher.id %>"><%= teacher.name %> - <%= teacher.email %></option>
+					<% }) %>
+					<% } %>
+				</select>
+				<span class="text-danger"><%= validate.getError(errors, "teacherId")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Học thử:</label>
+				<input type="number"
+					class="form-control"
+					name="tryLearn"
+					placeholder="Nhập số buổi học thử" />
+				<span class="text-danger"><%= validate.getError(errors, "tryLearn")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Sĩ số:</label>
+				<input type="number"
+					class="form-control"
+					name="courseQuantity"
+					placeholder="Nhập sĩ số" />
+				<span class="text-danger"><%= validate.getError(errors, "courseQuantity")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Thời gian (số buổi):</label>
+				<input type="number"
+					class="form-control"
+					name="courseDuration"
+					placeholder="Nhập số buổi học" />
+				<span class="text-danger"><%= validate.getError(errors, "courseDuration")%></span>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<button type="submit"
+				class="btn btn-primary">
+				Thêm khóa học
+			</button>
+		</div>
+	</form>
+</div>

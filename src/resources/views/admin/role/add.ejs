@@ -1,0 +1,242 @@
+<form action="/admin/roles/add"
+	method="post"
+	autocomplete="off">
+	<div class="mb-3">
+		<label for="">Tên</label>
+		<input type="text"
+			name="nameRole"
+			placeholder="Tên Role..."
+			class="form-control" />
+		<span class="text-danger"><%= validate.getError(errors, "nameRole") %></span>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th width="29%">Module</th>
+				<th>Quyền</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Quản lý người dùng</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								id="usersRead"
+								name="permission"
+								value="users.read" />
+							<label for="usersRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersAdd"
+								value="users.add" />
+							<label for="usersAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersUpdate"
+								value="users.update" />
+							<label for="usersUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersDelete"
+								value="users.delete" />
+							<label for="usersDelete">Xóa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersPermission"
+								value="users.permission" />
+							<label for="usersPermission">Phân quyền</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý role</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesRead"
+								value="roles.read" />
+							<label for="rolesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesAdd"
+								value="roles.add" />
+							<label for="rolesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesUpdate"
+								value="roles.update" />
+							<label for="rolesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesDelete"
+								value="roles.delete" />
+							<label for="rolesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý khóa học</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesRead"
+								value="courses.read" />
+							<label for="coursesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesAdd"
+								value="courses.add" />
+							<label for="coursesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesUpdate"
+								value="courses.update" />
+							<label for="coursesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesDelete"
+								value="courses.delete" />
+							<label for="coursesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý lớp học</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesRead"
+								value="classes.read" />
+							<label for="classesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesAdd"
+								value="classes.add" />
+							<label for="classesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesUpdate"
+								value="classes.update" />
+							<label for="classesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesDelete"
+								value="classes.delete" />
+							<label for="classesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý giảng viên/trợ giảng</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersRead"
+								value="teachers.read" />
+							<label for="teachersRead">Xem</label>
+						</div>
+						<div class="col">
+
+							<input type="checkbox"
+								name="permission"
+								id="teachersAdd"
+								value="teachers.add" />
+							<label for="teachersAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersUpdate"
+								value="teachers.update" />
+							<label for="teachersUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersDelete"
+								value="teachers.delete" />
+							<label for="teachersDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý học viên</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsRead"
+								value="students.read" />
+							<label for="studentsRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsAdd"
+								value="students.add" />
+							<label for="studentsAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsUpdate"
+								value="students.update" />
+							<label for="studentsUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsDelete"
+								value="students.delete" />
+							<label for="studentsDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit"
+		class="btn btn-primary">Thêm mới</button>
+</form>

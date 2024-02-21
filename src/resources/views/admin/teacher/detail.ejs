@@ -1,0 +1,29 @@
+<h4><strong>Thông tin cá nhân</strong></h4>
+
+<ul class="ml-4">
+  <li class="py-2"><strong>Tên: </strong><%= teacher.name %></li>
+  <li class="py-2"><strong>Email: </strong><%= teacher.email %></li>
+  <li class="py-2"><strong>SĐT: </strong><%= teacher.phone %></li>
+  <li class="py-2"><strong>Chức vụ: </strong><%= teacher.Type.name === "Teacher" ? "Giảng viên" : "Trợ giảng" %></li>
+  <li class="py-2"><strong>Địa chỉ: </strong><%= teacher.address %></li>
+</ul>
+
+<h4><strong>Danh sách các lớp đang phụ trách</strong></h4>
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th style="width: 10px">#</th>
+      <th>Tên Lớp</th>
+      <th>Lịch trình</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% classes.forEach((classVal, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><a href="/admin/classes/detail/<%= classVal.id %>"><%= classVal.name %></a></td>
+      <td><a href="/admin/classes/calendar/<%= classVal.id %>" class="btn btn-info"><i class="fas fa-eye"></i></a></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

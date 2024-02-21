@@ -1,0 +1,68 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.background_box {
+    width: 60px;
+    height: 30px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle_box {
+    background-color: #d2d2d2;
+    width: 60px;
+    height: 30px;
+    border-radius: 200px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+}
+
+.toggle_box_facebook::before {
+    position: absolute;
+    content: "";
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.toggle_box_google::before {
+    position: absolute;
+    content: "";
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.toggle_box_github::before {
+    position: absolute;
+    content: "";
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.checkbox_social:checked + .toggle_box {
+    background-color: #4089f6;
+}
+
+.checkbox_social:checked + .toggle_box::before {
+    transform: translateX(30px);
+}
+
+.checkbox_social {
+    display: none;
+}

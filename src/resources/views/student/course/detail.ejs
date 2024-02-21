@@ -1,0 +1,86 @@
+<style>
+	.accordion-head i
+	{
+		font-size: 2em;
+		float: right;
+	}
+
+	.accordion-head>.collapsed>i:before
+	{
+		content: "\f105";
+	}
+</style>
+<h4><strong>Mô tả</strong></h4>
+<ul class="ml-4">
+	<li class="py-2">
+		<strong>Khóa học:</strong> <%= course.name %>
+	</li>
+	<li class="py-2">
+		<strong>Học phí:</strong> <%= course.price.toLocaleString() %> đ
+	</li>
+	<li class="py-2">
+		<strong>Giảng viên:</strong> <%= course.User.name %>
+	</li>
+	<li class="py-2">
+		<strong>Học thử:</strong> <%= course.tryLearn %> buổi
+	</li>
+	<li class="py-2">
+		<strong>Sĩ số:</strong> <%= course.quantity %> học viên
+	</li>
+</ul>
+<h4><strong>Nội dung khóa học:</strong></h4>
+<div class="container-fluid p-0">
+	<div class="my-auto">
+		<div id="accordion"
+				 role="tablist"
+				 aria-multiselectable="true">
+			<!-- Accordion Item 1 -->
+			<div class="card">
+				<% modules.forEach((moduleVal, index) => {%>
+				<div class="card-header position-relative"
+						 role="tab"
+						 id="accordionHeadingOne">
+					<div class="mb-0 row">
+						<div class="col-12 no-padding accordion-head">
+							<a data-toggle="collapse"
+								 style="color: #000000"
+								 data-parent="#accordion"
+								 href="#accordionBody<%= index %>"
+								 aria-expanded="false"
+								 aria-controls="accordionBody<%= index %>"
+								 class="collapsed">
+								<i class="fa fa-angle-down"
+									 aria-hidden="true"></i>
+								<h5><%= index +1 %>. <%= moduleVal.name %></h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="accordionBody<%= index %>"
+						 class="collapse mt-3"
+						 role="tabpanel"
+						 aria-labelledby="accordionHeading<%= index%>"
+						 aria-expanded="false"
+						 data-parent="accordion">
+					<div class="card-block col-12">
+						<% moduleArr.forEach(({id, documentList}) => {%>
+						<% if(id === moduleVal.id) {%>
+						<% documentList.forEach((value, i) => { %>
+						<div class="position-relative">
+							<h6 class="ml-3">
+								<a href="<%= value.pathName %>"
+									 target="_blank">
+									<%=index+1%>.<%=i+1%>. <%= value.content %>
+								</a>
+							</h6>
+							<hr />
+						</div>
+						<% }) %>
+						<%}}) %>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+</div>

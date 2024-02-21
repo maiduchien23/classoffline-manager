@@ -1,0 +1,274 @@
+<form action="/admin/roles/edit/<%= role.id %>"
+	method="post"
+	autocomplete="off">
+	<div class="mb-3">
+		<label for="">Tên</label>
+		<input type="text"
+			name="nameRole"
+			placeholder="Tên Role..."
+			class="form-control"
+			value="<%= role.name %>" />
+		<span class="text-danger"><%= validate.getError(errors, "nameRole") %></span>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th width="29%">Module</th>
+				<th>Quyền</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Quản lý người dùng</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								id="usersRead"
+								name="permission"
+								value="users.read"
+								<%= permissionUtils.get(permissions, "users.read") && "checked"  %> />
+							<label for="usersRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersAdd"
+								value="users.add"
+								<%= permissionUtils.get(permissions, "users.add") && "checked"  %> />
+							<label for="usersAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersUpdate"
+								value="users.update"
+								<%= permissionUtils.get(permissions, "users.update") && "checked"  %> />
+							<label for="usersUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersDelete"
+								value="users.delete"
+								<%= permissionUtils.get(permissions, "users.delete") && "checked"  %> />
+							<label for="usersDelete">Xóa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="usersPermission"
+								value="users.permission"
+								<%= permissionUtils.get(permissions, "users.permission") && "checked"  %> />
+							<label for="usersPermission">Phân quyền</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý role</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesRead"
+								value="roles.read"
+								<%= permissionUtils.get(permissions, "roles.read") && "checked"  %> />
+							<label for="rolesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesAdd"
+								value="roles.add"
+								<%= permissionUtils.get(permissions, "roles.add") && "checked"  %> />
+							<label for="rolesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesUpdate"
+								value="roles.update"
+								<%= permissionUtils.get(permissions, "roles.update") && "checked"  %> />
+							<label for="rolesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="rolesDelete"
+								value="roles.delete"
+								<%= permissionUtils.get(permissions, "roles.delete") && "checked"  %> />
+							<label for="rolesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý khóa học</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesRead"
+								value="courses.read"
+								<%= permissionUtils.get(permissions, "courses.read") && "checked"  %> />
+							<label for="coursesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesAdd"
+								value="courses.add"
+								<%= permissionUtils.get(permissions, "courses.add") && "checked"  %> />
+							<label for="coursesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesUpdate"
+								value="courses.update"
+								<%= permissionUtils.get(permissions, "courses.update") && "checked"  %> />
+							<label for="coursesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="coursesDelete"
+								value="courses.delete"
+								<%= permissionUtils.get(permissions, "courses.delete") && "checked"  %> />
+							<label for="coursesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý lớp học</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesRead"
+								value="classes.read"
+								<%= permissionUtils.get(permissions, "classes.read") && "checked"  %> />
+							<label for="classesRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesAdd"
+								value="classes.add"
+								<%= permissionUtils.get(permissions, "classes.add") && "checked"  %> />
+							<label for="classesAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesUpdate"
+								value="classes.update"
+								<%= permissionUtils.get(permissions, "classes.update") && "checked"  %> />
+							<label for="classesUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="classesDelete"
+								value="classes.delete"
+								<%= permissionUtils.get(permissions, "classes.delete") && "checked"  %> />
+							<label for="classesDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý giảng viên/trợ giảng</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersRead"
+								value="teachers.read"
+								<%= permissionUtils.get(permissions, "teachers.read") && "checked"  %> />
+							<label for="teachersRead">Xem</label>
+						</div>
+						<div class="col">
+
+							<input type="checkbox"
+								name="permission"
+								id="teachersAdd"
+								value="teachers.add"
+								<%= permissionUtils.get(permissions, "teachers.add") && "checked"  %> />
+							<label for="teachersAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersUpdate"
+								value="teachers.update"
+								<%= permissionUtils.get(permissions, "teachers.update") && "checked"  %> />
+							<label for="teachersUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="teachersDelete"
+								value="teachers.delete"
+								<%= permissionUtils.get(permissions, "teachers.delete") && "checked"  %> />
+							<label for="teachersDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>Quản lý học viên</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsRead"
+								value="students.read"
+								<%= permissionUtils.get(permissions, "students.read") && "checked"  %> />
+							<label for="studentsRead">Xem</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsAdd"
+								value="students.add"
+								<%= permissionUtils.get(permissions, "students.add") && "checked"  %> />
+							<label for="studentsAdd">Thêm</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsUpdate"
+								value="students.update"
+								<%= permissionUtils.get(permissions, "students.update") && "checked"  %> />
+							<label for="studentsUpdate">Sửa</label>
+						</div>
+						<div class="col">
+							<input type="checkbox"
+								name="permission"
+								id="studentsDelete"
+								value="students.delete"
+								<%= permissionUtils.get(permissions, "students.delete") && "checked"  %> />
+							<label for="studentsDelete">Xóa</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<input type="hidden"
+			name="_method"
+			value="PATCH">
+		<button type="submit"
+			class="btn btn-primary">Sửa</button>
+
+	</div>
+</form>

@@ -1,0 +1,74 @@
+<div class="card card-primary">
+	<form action="/admin/teachers/edit/<%= teacher.id %>"
+		method="post">
+		<div class="card-body">
+			<div class="form-group">
+				<label for="nameUser">Tên người dùng:</label>
+				<input type="text"
+					class="form-control"
+					id="nameUser"
+					name="name"
+					placeholder="Nhập tên người dùng"
+					value="<%= teacher.name %>" />
+				<span class="text-danger"><%= validate.getError(errors, "name")%></span>
+			</div>
+			<div class="form-group">
+				<label for="emailUser">Email:</label>
+				<input type="email"
+					class="form-control"
+					id="emailUser"
+					name="email"
+					placeholder="Nhập email"
+					value="<%= teacher.email %>"
+					readonly />
+				<span class="text-danger"><%= validate.getError(errors, "email")%></span>
+			</div>
+			<div class="form-group">
+				<label for="phoneUser">Số điện thoại:</label>
+				<input type="text"
+					class="form-control"
+					id="phoneUser"
+					name="phone"
+					placeholder="Nhập số điện thoại"
+					value="<%= teacher.phone %>" />
+				<span class="text-danger"><%= validate.getError(errors, "phone")%></span>
+			</div>
+			<div class="form-group">
+				<label for="addressUser">Địa chỉ:</label>
+				<input type="text"
+					class="form-control"
+					id="addressUser"
+					name="address"
+					placeholder="Nhập địa chỉ"
+					value="<%= teacher.address %>" />
+				<span class="text-danger"><%= validate.getError(errors, "address")%></span>
+			</div>
+			<div class="form-group">
+				<label for="">Chức vụ:</label>
+				<input type="radio"
+					id="typeTeacher"
+					name="typeName"
+					value="Teacher"
+					<%= (teacher.Type.name === "Teacher") ? "checked" : ""  %>>
+				<label for="typeTeacher">Giảng viên</label>
+				<input type="radio"
+					id="typeTA"
+					name="typeName"
+					value="TA"
+					<%= (teacher.Type.name === "TA") ? "checked" : ""  %>>
+				<label for="typeTA">Trợ giảng</label>
+				<span class="text-danger"><%= validate.getError(errors, "typeName")%></span>
+			</div>
+		</div>
+
+		<div class="card-footer">
+			<input type="hidden"
+				name="_method"
+				value="PATCH">
+			<button type="submit"
+				class="btn btn-primary">
+				Cập nhật
+			</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,49 @@
+<section class="container-fluid bg-body-tertiary d-block">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-6 col-lg-4"
+			style="min-width: 500px">
+			<div class="card bg-white mb-5 mt-5 border-0"
+				style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02)">
+				<form action="/auth/logout"
+					method="post">
+					<button class="chevron-left">
+						<i class="fas fa-chevron-left"
+							style="color: #ffffff"></i>
+					</button>
+				</form>
+
+				<div class="card-body">
+					<div class="text-center mt-4">
+						<h3>Vui lòng đặt lại mật khẩu</h3>
+					</div>
+					<form action="/auth/first-login"
+						method="POST">
+						<div class="form-group">
+							<label for="password">Mật khẩu mới:</label>
+							<input class="form-control form-control-lg"
+								type="password"
+								name="password"
+								placeholder="Nhập mật khẩu mới..." />
+						</div>
+						<div class="form-group">
+							<label for="repassword">Nhập lại mật khẩu mới:</label>
+							<input class="form-control form-control-lg"
+								type="password"
+								name="repassword"
+								placeholder="Nhập lại mật khẩu mới..." />
+						</div>
+						<div class="text-center mt-3">
+							<input type="hidden"
+								name="_method"
+								value="PATCH">
+							<button type="submit"
+								class="btn btn-lg btn-primary">
+								Gửi
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

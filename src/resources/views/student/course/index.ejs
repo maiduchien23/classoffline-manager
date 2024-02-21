@@ -1,0 +1,63 @@
+<div class="card-body">
+  <section class="justify-content-between content mb-3">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="d-flex align-items-center col-md-8 offset-md-2 ml-0 p-0">
+          <form action="" method="get">
+            <div class="input-group">
+              <input type="text" class="form-control form-control-md" name="keyword" placeholder="Nhập từ tìm kiếm">
+              <div class="input-group-append" width="38px" height="38px">
+                <button type="submit" class="btn btn-md btn-default">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <table class="table table-bordered text-center">
+    <thead>
+      <tr>
+        <th style="width: 10px">#</th>
+        <th>Tên</th>
+        <th>Học phí</th>
+        <th>Giảng viên</th>
+        <th>Học thử</th>
+        <th>Sĩ số</th>
+        <th>Thời gian</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% courses.forEach((course, index) => {%>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><a href="/courses/detail/<%= course.id %>"><%= course.name %></a></td>
+        <td><%= course.price.toLocaleString() %> đ</td>
+        <td><%= course.User.name %></td>
+        <td><%= course.tryLearn %> buổi</td>
+        <td><%= course.quantity %></td>
+        <td><%= course.duration %> buổi </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <div class="d-flex mt-3 align-items-center justify-content-between">
+    <form action="" method="post">
+      <div class="form-group">
+        <div class="d-flex align-items-center" style="width: 170px">
+          <label class="mr-2 mb-0 w-100">Số bản ghi</label>
+          <select class="form-control record-number" name="recordNumber">
+            <option value="5" <%= +recordNumber === 5 ? 'selected' : "" %>>5</option>
+            <option value="10" <%= +recordNumber === 10 ? 'selected' : "" %>>10</option>
+            <option value="15" <%= +recordNumber === 15 ? 'selected' : "" %>>15</option>
+            <option value="20" <%= +recordNumber === 20 ? 'selected' : "" %>>20</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <%- include("../../subviews/paginate", {totalPage, page}) %>
+  </div>
+</div>
