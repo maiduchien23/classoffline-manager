@@ -1,0 +1,1 @@
+# classoffline-manager
