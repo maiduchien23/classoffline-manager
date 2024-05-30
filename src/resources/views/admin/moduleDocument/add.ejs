@@ -3,26 +3,50 @@
     <div class="card-body">
       <div class="form-group">
         <label for="">Nội dung tài liệu:</label>
-        <input type="text" class="form-control" name="documentContent" placeholder="Nhập tiêu đề tài liệu" />
+        <input
+          type="text"
+          class="form-control"
+          id="documentContent"
+          name="documentContent"
+          placeholder="Nhập tiêu đề tài liệu"
+        />
       </div>
       <div class="form-group">
         <label for="">Đường dẫn tới tài liệu:</label>
-        <input type="text" class="form-control" name="pathName" placeholder="Nhập đường dẫn tới tài liệu" />
+        <input
+          type="text"
+          class="form-control"
+          name="pathName"
+          placeholder="Nhập đường dẫn tới tài liệu"
+        />
       </div>
       <div class="form-group">
         <label for="">Tài liệu:</label>
         <select class="form-control" name="moduleId">
           <option value="">Chọn tài liệu</option>
           <% courseModule.forEach((moduleVal) => { %>
-          <option value="<%= moduleVal.id %>"><%= moduleVal.name %> - <%= moduleVal.Course.name %></option>
+          <option value="<%= moduleVal.id %>">
+            <%= moduleVal.name %> - <%= moduleVal.Course.name %>
+          </option>
           <% }) %>
         </select>
       </div>
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">
-        Thêm tài liệu
-      </button>
+      <button type="submit" class="btn btn-primary">Thêm tài liệu</button>
     </div>
   </form>
 </div>
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+<script>
+  // Check if CKEditor is loaded
+  if (typeof CKEDITOR !== "undefined") {
+    CKEDITOR.replace("documentContent", {
+      autoParagraph: false,
+      enterMode: CKEDITOR.ENTER_BR,
+      shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+  } else {
+    console.error("CKEditor is not loaded.");
+  }
+</script>
