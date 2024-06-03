@@ -16,7 +16,7 @@ Prefix: /teacher
 
 Prefix: /auth
 - Tổng quan phần mềm
-  + Phần mềm dành cho các đối tượng User và Admin
+  + Phần mềm dành cho các đối tượng Admin, Giảng viên,Sinh viên
   + Giao diện thân thiện dễ sử dụng
   + Các module có đầy đủ các chức năng:
     1.Thêm sửa xóa danh sách
